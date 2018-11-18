@@ -2,6 +2,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+
 // routes
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -15,6 +17,10 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
+app.use(passport.initialize());
+
+// passport config
+require('./config/passport.js')(passport);
 
 // port
 const port = process.env.PORT || 5000;
@@ -34,10 +40,6 @@ mongoose.connect(db)
     .catch(err => {
         console.log(err)
     })
-
-app.get('/', (req, res) => {
-    res.send('hello world')
-});
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
