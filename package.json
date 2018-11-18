@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "devserver": "nodemon servger.js"
+    "devserver": "nodemon server.js"
   },
   "author": "Muhamad Ibnu Tri Yuono",
   "license": "MIT",
