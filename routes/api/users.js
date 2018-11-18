@@ -16,7 +16,7 @@ router.get('/test', (req, res) => {
     });
 });
 
-/*  @route GET /api/users/register
+/*  @route POST /api/users/register
     @desc Register user
     @access public
 */
@@ -58,5 +58,41 @@ router.post('/register', (req, res) => {
             }
         })
 });
+
+/*  @route POST /api/users/register
+    @desc Login user JWT
+    @access public
+*/
+router.post('/login', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // find user by email
+    User.findOne({
+            email
+        })
+        .then(user => {
+            // check for user
+            if (!user) {
+                return res.status(404).json({
+                    email: "User not found"
+                });
+            }
+            // check password
+            bcrypt.compare(password, user.password)
+                .then(isMatch => {
+                    if (isMatch) {
+                        res.json({
+                            msg: "Success"
+                        })
+                    } else {
+                        return res.status(400).json({
+                            password: "password incorrect"
+                        })
+                    }
+                })
+        })
+})
+
 
 module.exports = router;
