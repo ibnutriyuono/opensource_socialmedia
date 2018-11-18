@@ -3,6 +3,7 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 // keys
 const keys = require('../../config/keys');
@@ -100,8 +101,8 @@ router.post('/login', (req, res) => {
                             },
                             (err, token) => {
                                 res.json({
-                                    success:true,
-                                    token: 'Bearer '+ token
+                                    success: true,
+                                    token: 'Bearer ' + token
                                 });
                             });
 
@@ -112,6 +113,21 @@ router.post('/login', (req, res) => {
                     }
                 })
         })
+})
+
+/*  @route POST /api/users/current
+    @desc Return current user
+    @access private
+*/
+router.get('/current', passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
+    res.json({
+        id: req.user.id,
+        name:req.user.name,
+        email:req.user.email,
+        date: req.user.date
+    })
 })
 
 
