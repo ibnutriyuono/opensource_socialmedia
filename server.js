@@ -1,7 +1,7 @@
 // dependencies
 const express = require('express');
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
 // routes
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -9,6 +9,12 @@ const posts = require('./routes/api/posts');
 
 // express
 const app = express();
+
+// middleware
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json());
 
 // port
 const port = process.env.PORT || 5000;
