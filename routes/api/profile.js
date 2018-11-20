@@ -8,6 +8,9 @@ const router = express.Router();
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
+// load input validation
+const validateProfileInput = require('../../validation/profile');
+
 /*  @route GET /api/profile/test
     @desc test profile route
     @access public
@@ -29,6 +32,7 @@ router.get('/', passport.authenticate('jwt', {
     Profile.findOne({
             user: req.user.id
         })
+        .populate('user', ['name', 'avatar'])
         .then(profile => {
             if (!profile) {
                 errors.noProfile = 'There is no profile for this user'
