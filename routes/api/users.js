@@ -30,9 +30,9 @@ router.get('/test', (req, res) => {
     @access public
 */
 router.post('/register', (req, res) => {
-    const { 
-        errors, 
-        isValid 
+    const {
+        errors,
+        isValid
     } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -48,10 +48,9 @@ router.post('/register', (req, res) => {
                 return res.status(400).json(errors);
             } else {
                 const avatar = gravatar.url(req.body.email, {
-                    //  s for size, d for default, r for rating
-                    s: '200',
-                    r: 'pg',
-                    d: 'mm'
+                    s: '200', // Size
+                    r: 'pg', // Rating
+                    d: 'mm' // Default
                 });
                 const newUser = new User({
                     name: req.body.name,
@@ -81,9 +80,9 @@ router.post('/register', (req, res) => {
     @access public
 */
 router.post('/login', (req, res) => {
-    const { 
-        errors, 
-        isValid 
+    const {
+        errors,
+        isValid
     } = validateLoginInput(req.body);
 
     if (!isValid) {
@@ -143,8 +142,8 @@ router.get('/current', passport.authenticate('jwt', {
 }), (req, res) => {
     res.json({
         id: req.user.id,
-        name:req.user.name,
-        email:req.user.email,
+        name: req.user.name,
+        email: req.user.email,
         date: req.user.date
     })
 })
