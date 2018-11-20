@@ -125,6 +125,7 @@ router.post(
 // @desc    GET profile by handle
 // @access  Public
 router.get('/handle/:handle', (req, res) => {
+    const errors = {};
     Profile.findOne({
             handle: req.params.handle
         })
@@ -145,6 +146,7 @@ router.get('/handle/:handle', (req, res) => {
 // @desc    GET profile by user id
 // @access  Public
 router.get('/user/:user_id', (req, res) => {
+    const errors = {};
     Profile.findOne({
             handle: req.params.user_id
         })
