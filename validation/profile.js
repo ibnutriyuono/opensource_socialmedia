@@ -12,48 +12,54 @@ module.exports = function validateProfileInput(data) {
             min: 2,
             max: 40
         })) {
-        errors.handle = "Handle need to between 2 and 40 chars"
+        errors.handle = 'Handle needs to between 2 and 40 characters';
     }
 
     if (Validator.isEmpty(data.handle)) {
-        errors.handle = "Profile handle is required"
+        errors.handle = 'Profile handle is required';
     }
 
     if (Validator.isEmpty(data.status)) {
-        errors.handle = "Status handle is required"
+        errors.status = 'Status field is required';
     }
 
     if (Validator.isEmpty(data.skills)) {
-        errors.handle = "Skills handle is required"
+        errors.skills = 'Skills field is required';
     }
 
-    if (!iSEmpty(data.website)) {
+    if (!isEmpty(data.website)) {
         if (!Validator.isURL(data.website)) {
-            errors.website = "Not a valid URL"
+            errors.website = 'Not a valid URL';
         }
     }
 
-    if (!iSEmpty(data.youtube)) {
+    if (!isEmpty(data.youtube)) {
         if (!Validator.isURL(data.youtube)) {
-            errors.website = "Not a valid URL"
+            errors.youtube = 'Not a valid URL';
         }
     }
 
-    if (!iSEmpty(data.facebook)) {
+    if (!isEmpty(data.twitter)) {
+        if (!Validator.isURL(data.twitter)) {
+            errors.twitter = 'Not a valid URL';
+        }
+    }
+
+    if (!isEmpty(data.facebook)) {
         if (!Validator.isURL(data.facebook)) {
-            errors.website = "Not a valid URL"
+            errors.facebook = 'Not a valid URL';
         }
     }
 
-    if (!iSEmpty(data.linkedin)) {
+    if (!isEmpty(data.linkedin)) {
         if (!Validator.isURL(data.linkedin)) {
-            errors.website = "Not a valid URL"
+            errors.linkedin = 'Not a valid URL';
         }
     }
 
-    if (!iSEmpty(data.instagram)) {
+    if (!isEmpty(data.instagram)) {
         if (!Validator.isURL(data.instagram)) {
-            errors.website = "Not a valid URL"
+            errors.instagram = 'Not a valid URL';
         }
     }
 
