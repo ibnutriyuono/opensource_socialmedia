@@ -18,7 +18,7 @@ router.get('/test', (req, res) => {
     });
 });
 
-// @route POST api/posts/test
+// @route POST api/posts
 // @desc Create a post
 // @access private
 router.post('/', passport.authenticate('jwt', {
