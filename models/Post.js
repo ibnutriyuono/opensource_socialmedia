@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create post schema
-const Post = new Schema({
+const PostSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -48,3 +48,5 @@ const Post = new Schema({
         default:Date.now
     }
 })
+
+module.exports = Post = mongoose.model('post', PostSchema)
