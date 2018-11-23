@@ -1,19 +1,29 @@
-const chai = require('chai');
-const expect = require('chai').expect;
-const chaiHttp = require('chai-http');
+let Item = require('./../models/User');
+
+let chai = require('chai');
+let chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 
-describe('API Testing', () => {
+// describe('Items', () => {
+//     beforeEach((done) => {
+//         Item.remove({}, (err) => {
+//             done();
+//         });
+//     });
+   
 
-    it('it should success to retrieve all data', (done) => {
-        chai.request('localhost:5000')
+// });
+
+describe('/GET item', () => {
+    it('it should GET perticular item', (done) => {
+        chai.request("http://localhost:5000")
             .get('/api/users/test')
             .end((err, res) => {
-                expect(res.body).to.have.status(200);
-                expect(res.body).to.have.property('msg');
+                res.body.should.have.property('msg')
+                    // .which.is.an('object')
+                    // .and.has.property('_id')
+                done();
             });
-    done();
     });
-
 });
