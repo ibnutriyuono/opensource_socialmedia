@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "devserver": "nodemon server.js"
+    "devserver": "nodemon server.js",
+    "test": "mocha --timeout 10000"
   },
   "author": "Muhamad Ibnu Tri Yuono",
   "license": "MIT",
