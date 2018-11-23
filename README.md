@@ -17,3 +17,5 @@ MERN Stack Social Media
 | GET     | api/profile/user/:user_id          | Get current profile by user id   | `{"info": ""}`        | Private |
 | GET     | api/profile/all                    | Get all profile                  | `{"msg": ""}`         | Public  |
 | POST    | api/profile/experience             | Get profile by experience        | `{"msg": ""}`         | Public  |
+| GET     | api/post/test                      | Test                             | `{"msg": ""}`         | Public  |
+| POST    | api/post                           | Create a post                    | `{"info": ""}`        | Private |
