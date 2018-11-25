@@ -44,4 +44,16 @@ router.post('/', passport.authenticate('jwt', {
         .then(post => res.json(post));
 });
 
+// @route GET api/posts
+// @desc get all posts
+// @access public
+router.get('/', (req, res) => {
+    Post.find()
+        .sort({
+            date: -1
+        })
+        .then(posts => res.json(posts))
+        .catch(err => res.status(404))
+})
+
 module.exports = router;
