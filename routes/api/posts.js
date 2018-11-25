@@ -54,6 +54,18 @@ router.get('/', (req, res) => {
         })
         .then(posts => res.json(posts))
         .catch(err => res.status(404))
-})
+});
+
+// @route GET api/posts/:id
+// @desc get a post by id
+// @access public
+router.get('/:id', (req, res) => {
+    Post.findById(req.params.id)
+        .sort({
+            date: -1
+        })
+        .then(posts => res.json(posts))
+        .catch(err => res.status(404))
+});
 
 module.exports = router;
