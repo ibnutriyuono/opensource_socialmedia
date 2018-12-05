@@ -6,13 +6,17 @@
   "scripts": {
     "start": "node server.js",
     "devserver": "nodemon server.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run devserver\" \"npm run client\" "
   },
   "author": "Muhamad Ibnu Tri Yuono",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "express": "^4.16.4",
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^8.4.0",
