@@ -1,8 +1,19 @@
+import {GET_ERRORS} from './types';
+import axios from 'axios';
+
 // register
-import {TEST_DISPATCH} from './types'
-export const registerUser = (userData) => {
-    return{
-        type: TEST_DISPATCH,
-        payload: userData
-    }
+export const registerUser = (userData, history) => dispatch => {
+    // return{
+    //     type: TEST_DISPATCH,
+    //     payload: userData
+    // }
+     axios.post('/api/users/register', userData)
+            .then(res => history.push('/login'))
+            .catch(e => 
+                dispatch({
+                    type: GET_ERRORS,
+                    payload: e.response.data
+                })
+            )
+
 }
